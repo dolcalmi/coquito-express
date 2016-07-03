@@ -1,0 +1,28 @@
+{
+	"myapp-core": {
+		"errors": {
+			"account": {
+				"login": "Invalid email or password",
+				"loginEmailNotVerified": "Please verify your account",
+				"signup-exists": "The user already exists",
+				"activate": "We could't activate your account. Please contact technical support",
+				"invalid-verification-token": "Invalid verification token",
+				"forgot-password": "We could't reset your password. Please contact technical support",
+				"invalid-reset-token": "Invalid reset password token",
+				"reset-password": "We could't reset your password. Please try again",
+				"change-password": "We could't change your password. Please try again"
+			}
+		}
+	},
+	"app": {
+		"success": {
+			"signup": "Please verify your email to confirm the account",
+			"change-password": "Successfully changed your password",
+			"forgot-password": "A verification link has been sent to your email",
+			"reset-password": "Successfully changed your password"
+		},
+		"errors": {
+			"not-found": "Not Found"
+		}
+	}
+}

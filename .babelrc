@@ -1,0 +1,24 @@
+{
+    "presets": [ "es2015" ],
+    "plugins": [
+        [
+            "babel-plugin-transform-builtin-extend", {
+                globals: ["Error", "Array"]
+            }
+        ],
+        [
+            "transform-strict-mode", {
+                "strict": true
+            }
+        ],
+        [
+            "module-alias",
+            [
+                { "src": "./app", "expose": "app" },
+                { "src": "./bin", "expose": "bin" },
+                { "src": "./config", "expose": "config" },
+                { "src": "./lib/myapp-core", "expose": "myapp-core" }
+            ]
+        ]
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "name": "myapp",
+    "version": "0.0.1",
+    "description": "Just another expressjs + bookshelf boilerplate",
+    "private": true,
+    "engines": {
+        "node": ">=6.2.x",
+        "npm":  ">=3.9.x"
+    },
+    "scripts": {
+        "start": "DEBUG=myapp:* nodemon ./bin/www.js --ext js,json --ignore dist/ --ignore tests/ --exec babel-node",
+        "build": "rm -rf dist/* && cp package.json dist/package.json && babel -D -d dist/config config && babel -D -d dist/lib lib && babel -D -d dist/app app && babel -D -d dist/bin bin",
+        "serve": "node dist/bin/www.js",
+        "test": "mocha tests --recursive --compilers js:babel-register",
+        "db:create": "knex --knexfile ./config/database.js migrate:make",
+        "db:migrate": "knex --knexfile ./config/database.js migrate:latest",
+        "db:rollback": "knex --knexfile ./config/database.js migrate:rollback",
+        "db:create:seed": "knex --knexfile ./config/database.js seed:make",
+        "db:seed": "knex --knexfile ./config/database.js seed:run"
+    },
+    "dependencies": {
+        "bcrypt": "^0.8.7",
+        "bluebird": "^3.4.1",
+        "body-parser": "^1.13.3",
+        "bookshelf": "^0.9.5",
+        "bookshelf-camelcase": "^1.1.2",
+        "bookshelf-jsonapi-params": "^0.6.2",
+        "bookshelf-modelbase": "^2.10.1",
+        "compression": "^1.5.2",
+        "cors": "^2.7.1",
+        "debug": "~2.2.0",
+        "express": "~4.13.3",
+        "express-json-promise": "^0.1.2",
+        "express-route-builder": "0.0.11",
+        "helmet": "^2.1.1",
+        "i18n": "^0.8.3",
+        "jsonapi-query-parser": "^1.2.1",
+        "jsonwebtoken": "^7.0.1",
+        "knex": "^0.11.7",
+        "lodash": "^4.13.1",
+        "morgan": "~1.6.1",
+        "passport": "^0.3.2",
+        "passport-jwt": "^2.1.0",
+        "pg": "^6.0.1",
+        "serve-favicon": "~2.3.0"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.10.1",
+        "babel-core": "^6.9.0",
+        "babel-plugin-module-alias": "^1.4.0",
+        "babel-plugin-transform-builtin-extend": "^1.1.0",
+        "babel-plugin-transform-strict-mode": "^6.8.0",
+        "babel-preset-es2015": "^6.9.0",
+        "babel-register": "^6.9.0",
+        "mocha": "^2.5.3",
+        "nodemon": "^1.9.2",
+        "request": "^2.72.0"
+    }
+}

@@ -21,6 +21,7 @@ Just another ES6 expressjs + bookshelf boilerplate
     * db:rollback : rollback the last migration
     * db:create:seed [seed file name]: create a seed file
     * db:seed : run the seeds
+* [Ember client](https://github.com/dolcalmi/ember-coquito-express)
 
 
 ## Prerequisites

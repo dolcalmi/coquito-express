@@ -11,6 +11,7 @@ module.exports = function(environment) {
         app: {
             baseURL: '/v1/',
             defaultPort: '3000',
+            /* please check https://www.grc.com/passwords.htm*/
             secretOrKey: environment.API_SECRET || 'mySuperSecureStringForAPILogin',
             loginExpiresIn: "1h",
             jwt : jwt,
@@ -22,6 +23,7 @@ module.exports = function(environment) {
             }
         },
         myapp: {
+            /* please check https://www.grc.com/passwords.htm*/
             secretOrKey: environment.myapp_SECRET || 'mySuperSecureStringForResetAndVerification',
             verificationTokenExpiresIn: "365d",
             resetPasswordTokenExpiresIn: "3h",

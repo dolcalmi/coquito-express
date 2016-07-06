@@ -6,7 +6,7 @@ Just another ES6 expressjs + bookshelf boilerplate
 
 * Initially just for APIs but you can add 'views' easily
 * ES6 support via [babel](https://babeljs.io)
-* Vagrant with [PostgreSQL](https://www.postgresql.org): just for test purpose, if you have other database supported by [Bookshelf](http://bookshelfjs.org/) just have to change de [Database Configuration](https://github.com/dolcalmi/coquito-express/blob/master/config/database.js)
+* Vagrant with [PostgreSQL](https://www.postgresql.org): just for test purpose, if you have other database supported by [Bookshelf](http://bookshelfjs.org/) please change the [Database Configuration](https://github.com/dolcalmi/coquito-express/blob/master/config/database.js)
 * Useful [middlewares](https://github.com/dolcalmi/coquito-express/blob/master/app/middlewares/vendor.js)
 * Ember like structure. Just begin with app/app.js
 * Independent [Business Core](https://github.com/dolcalmi/coquito-express/tree/master/lib/myapp-core) from API Layer

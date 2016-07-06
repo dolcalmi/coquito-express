@@ -1,16 +1,17 @@
 {
 	"myapp-core": {
 		"errors": {
+			"validation-error": "Invalid data. Please verify and try again",
 			"account": {
 				"login": "Invalid email or password",
 				"loginEmailNotVerified": "Please verify your account",
 				"signup-exists": "The user already exists",
-				"activate": "We could't activate your account. Please contact technical support",
+				"activate": "We couldn't activate your account. Please contact technical support",
 				"invalid-verification-token": "Invalid verification token",
-				"forgot-password": "We could't reset your password. Please contact technical support",
+				"forgot-password": "We couldn't reset your password. Please contact technical support",
 				"invalid-reset-token": "Invalid reset password token",
-				"reset-password": "We could't reset your password. Please try again",
-				"change-password": "We could't change your password. Please try again"
+				"reset-password": "We couldn't reset your password. Please try again",
+				"change-password": "We couldn't change your password. Please try again"
 			}
 		}
 	},
@@ -23,6 +24,14 @@
 		},
 		"errors": {
 			"not-found": "Not Found"
+		}
+	},
+	"fields": {
+		"user": {
+			"firstName": "First Name",
+			"lastName": "Last Name",
+			"email": "Email",
+			"password": "Password"
 		}
 	}
 }

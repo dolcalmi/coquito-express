@@ -3,8 +3,8 @@ import {Strategy, ExtractJwt} from 'passport-jwt';
 import _ from 'lodash';
 
 export default function(config) {
-    let opts = _.clone(config.APP.JWT);
-    opts.secretOrKey = config.APP.secretOrKey;
+    let opts = _.clone(config.jwt);
+    opts.secretOrKey = config.secretOrKey;
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
 
     passport.use(new Strategy(opts, function(jwt_payload, done) {

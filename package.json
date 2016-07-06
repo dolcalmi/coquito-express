@@ -5,7 +5,7 @@
     "private": true,
     "engines": {
         "node": ">=6.2.x",
-        "npm":  ">=3.9.x"
+        "npm": ">=3.9.x"
     },
     "scripts": {
         "start": "DEBUG=myapp:* nodemon ./bin/www.js --ext js,json --ignore dist/ --ignore tests/ --exec babel-node",
@@ -26,6 +26,7 @@
         "bookshelf-camelcase": "^1.1.2",
         "bookshelf-jsonapi-params": "^0.6.2",
         "bookshelf-modelbase": "^2.10.1",
+        "checkit": "^0.7.0",
         "compression": "^1.5.2",
         "cors": "^2.7.1",
         "debug": "~2.2.0",

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import vendor from './vendor';
+import setBodyLanguage from './body-language';
 
 export default function(appContext) {
 	let router = Router();
@@ -7,7 +8,8 @@ export default function(appContext) {
 	// must be the first
 	router.use(vendor(appContext));
 
-	//here other middlewares
+	//here custom middlewares
+	router.use(setBodyLanguage(appContext));
 
 	return router;
 }

@@ -22,8 +22,8 @@ export default function(appContext) {
     	exposedHeaders: ['Link']
     }));
 
-    router.use(bodyParser.json({ limit : appContext.config.bodyParser.limit }));
-    router.use(bodyParser.urlencoded({ extended: false }));
+    router.use(bodyParser.json(appContext.config.bodyParser.json));
+    router.use(bodyParser.urlencoded(appContext.config.bodyParser.urlencoded));
     router.use(appContext.passport.initialize());
 	router.use(appContext.locales.init);
 	router.use(jsonPromise());

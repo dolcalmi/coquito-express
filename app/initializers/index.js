@@ -5,9 +5,11 @@ import coreServices from './myapp-core';
 
 const config = configuration(process.env);
 
-export default {
+const initializer = {
     config      : config,
-    locales     : locales(config),
-    passport    : passport(config),
-    services    : coreServices(config)
+    locales     : locales(config.app),
+    passport    : passport(config.app),
+    services    : coreServices(config.myapp)
 };
+
+export default initializer;

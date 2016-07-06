@@ -1,16 +1,17 @@
 {
 	"myapp-core": {
 		"errors": {
+			"validation-error": "Datos inválidos. Por favor verifique e intente nuevamente",
 			"account": {
 				"login": "Correo o contraseña incorrectos",
 				"loginEmailNotVerified": "Por favor confirme su cuenta",
 				"signup-exists": "El usuario ya existe",
-				"activate": "No pudimos activar tu cuenta. Por favor contacta a soporte técnico",
+				"activate": "No pudimos activar la cuenta. Por favor contacte a soporte técnico",
 				"invalid-verification-token": "Token de verificación inválido",
-				"forgot-password": "No pudimos restablecer su contraseña. Por favor contacta a soporte técnico",
+				"forgot-password": "No pudimos restablecer su contraseña. Por favor contacte a soporte técnico",
 				"invalid-reset-token": "Token para restablecer contraseña incorrecto",
-				"reset-password": "No pudimos restablecer su contraseña. Por favor intenta nuevamente",
-				"change-password": "No podemos cambiar la contraseña. Por favor intenta nuevamente"
+				"reset-password": "No pudimos restablecer su contraseña. Por favor intente nuevamente",
+				"change-password": "No podemos cambiar la contraseña. Por favor intente nuevamente"
 			}
 		}
 	},
@@ -23,6 +24,14 @@
 		},
 		"errors": {
 			"not-found": "No encontrado"
+		}
+	},
+	"fields": {
+		"user": {
+			"firstName": "Nombre",
+			"lastName": "Apellido",
+			"email": "Correo",
+			"password": "Contraseña"
 		}
 	}
 }

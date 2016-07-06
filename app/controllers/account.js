@@ -4,11 +4,11 @@ import _ from 'lodash';
 export default {
     login({body, app}, res, next) {
         let service = app.locals.appContext.services.account;
-        let config = app.locals.appContext.config.APP;
+        let config = app.locals.appContext.config.app;
 
         let result = service.login(body.email, body.password)
         .then((result) => {
-            let token = createToken(result.id, config);
+            let token = createToken(result.id, config, body.rememberMe == "true" ? "365d" : null);
             result.set('token', token);
             return { user : result };
 		})
@@ -17,10 +17,11 @@ export default {
         res.json(result);
     },
 
-    signup({body, app}, res, next) {
-        let service = app.locals.appContext.services.account;
+    signup(req, res, next) {
+        let service = req.app.locals.appContext.services.account;
 
-        let result = service.signup(body)
+        req.body.labels = createLabels(req);
+        let result = service.signup(req.body)
         .then((result) => {
             return { message : res.__("app.success.signup") };
 		})
@@ -31,7 +32,7 @@ export default {
 
     activate({body, app}, res, next) {
         let service = app.locals.appContext.services.account;
-        let config = app.locals.appContext.config.APP;
+        let config = app.locals.appContext.config.app;
 
         let result = service.activate(body.activationToken)
         .then((result) => {
@@ -46,7 +47,7 @@ export default {
 
     changePassword({user, body, app}, res, next) {
         let service = app.locals.appContext.services.account;
-        let config = app.locals.appContext.config.APP;
+        let config = app.locals.appContext.config.app;
 
         let result = service.changePassword(user, body.currentPassword, body.newPassword)
         .then((result) => {
@@ -59,7 +60,7 @@ export default {
 
     forgotPassword({body, app}, res, next) {
         let service = app.locals.appContext.services.account;
-        let config = app.locals.appContext.config.APP;
+        let config = app.locals.appContext.config.app;
 
         let result = service.forgotPassword(body.email)
         .then((result) => {
@@ -72,7 +73,7 @@ export default {
 
     resetPassword({body, app}, res, next) {
         let service = app.locals.appContext.services.account;
-        let config = app.locals.appContext.config.APP;
+        let config = app.locals.appContext.config.app;
 
         let result = service.resetPassword(body.newPassword, body.resetPasswordToken)
         .then((result) => {
@@ -84,9 +85,18 @@ export default {
     }
 };
 
-function createToken( userId, config ) {
-    let jwtConfig = _.clone(config.JWT);
-    jwtConfig.expiresIn = config.loginExpiresIn;
+function createToken( userId, config, expiresIn = null ) {
+    let jwtConfig = _.clone(config.jwt);
+    jwtConfig.expiresIn = expiresIn || config.loginExpiresIn;
 
     return jwt.sign({ userId: userId }, config.secretOrKey, jwtConfig);
+}
+
+function createLabels(req) {
+    return {
+        firstName: req.__('fields.user.firstName'),
+        lastName: req.__('fields.user.lastName'),
+        email: req.__('fields.user.email'),
+        password: req.__('fields.user.password')
+    };
 }

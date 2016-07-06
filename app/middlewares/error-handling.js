@@ -15,7 +15,7 @@ function error404(req, res, next) {
 function error500(err, req, res, next) {
     let error = errorParse(err, res);
     res.status(err.status || 500);
-    res.json({error: error});
+    res.json({errors: [error]});
 }
 
 function error500Dev(err, req, res, next) {
@@ -23,15 +23,21 @@ function error500Dev(err, req, res, next) {
     error.stack = err.stack;
 
     res.status(err.status || 500);
-    res.json({error: error});
+    res.json({errors: [error]});
 }
 
 function errorParse(err, res) {
     let code = err.code || err.status || 500;
     let message = code > 1300 ? res.__(err.message) : err.message;
 
-    return {
+    let error = {
         code: code,
         message: message
     };
+
+    if (err.validations) {
+        error.validations = err.validations;
+    }
+
+    return error;
 }

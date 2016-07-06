@@ -2,42 +2,47 @@ import database from 'config/database';
 
 /* jshint node: true */
 module.exports = function(environment) {
+    var jwt = {
+        issuer: environment.DOMAIN || 'myapp.co',
+        audience: environment.DOMAIN || 'myapp.co'
+    };
     var ENV = {
         environment: environment.NODE_ENV || 'development',
-        baseURL: '/',
-        APP: {
-            /* please check https://www.grc.com/passwords.htm*/
-            secretOrKey: environment.JWT_SECRET || 'mySuperSecureString',
+        app: {
+            baseURL: '/v1/',
+            defaultPort: '3000',
+            secretOrKey: environment.API_SECRET || 'mySuperSecureStringForAPILogin',
             loginExpiresIn: "1h",
-            verificationTokenExpiresIn: "365d",
-            resetPasswordTokenExpiresIn: "3h",
+            jwt : jwt,
             i18n: {
                 updateFiles: false,
                 objectNotation: true,
                 locales:['en', 'es'],
                 directory: __dirname + '/locales'
-            },
-            DEFAULT_PORT: '3000',
-            JWT : {
-                issuer: environment.DOMAIN || 'myapp.com',
-                audience: environment.DOMAIN || 'myapp.com'
             }
         },
+        myapp: {
+            secretOrKey: environment.myapp_SECRET || 'mySuperSecureStringForResetAndVerification',
+            verificationTokenExpiresIn: "365d",
+            resetPasswordTokenExpiresIn: "3h",
+            jwt : jwt
+        },
         bodyParser: {
-            limit : '100kb'
+            json: { limit : '100kb' },
+            urlencoded:{ extended: false }
         },
     };
 
     if (ENV.environment === 'development') {
-        ENV.APP.database = database.development;
+        ENV.myapp.database = database.development;
     }
 
     if (ENV.environment === 'staging') {
-        ENV.APP.database = database.staging;
+        ENV.myapp.database = database.staging;
     }
 
     if (ENV.environment === 'production') {
-        ENV.APP.database = database.production;
+        ENV.myapp.database = database.production;
     }
 
     return ENV;

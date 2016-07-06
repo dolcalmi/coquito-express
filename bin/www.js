@@ -13,7 +13,7 @@ var debug = require('debug')('myapp:server');
 * Get port from environment and store in Express.
 */
 
-var port = normalizePort(process.env.PORT || app.locals.appContext.config.APP.DEFAULT_PORT);
+var port = normalizePort(process.env.PORT || app.locals.appContext.config.app.defaultPort);
 app.set('port', port);
 
 /**

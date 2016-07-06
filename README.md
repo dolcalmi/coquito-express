@@ -1,6 +1,20 @@
 # Coquito Express
 
-Just another expressjs + bookshelf boilerplate
+Just another ES6 expressjs + bookshelf boilerplate
+
+## Features
+
+* Initially just for APIs but you can add 'views' easily
+* ES6 support via [babel](https://babeljs.io)
+* Vagrant with [PostgreSQL](https://www.postgresql.org): just for test purpose, if you have other database supported by [Bookshelf](http://bookshelfjs.org/) just have to change de [Database Configuration](https://github.com/dolcalmi/coquito-express/blob/master/config/database.js)
+* Useful [middlewares](https://github.com/dolcalmi/coquito-express/blob/master/app/middlewares/vendor.js)
+* Ember like structure. Just begin with app/app.js
+* Independent Business Core from API Layer
+* i18n support (english and spanish)
+* API with:
+    * signup, activate account, login, change password, forgot password, reset password and a demo path for 'users'
+    * Emails not included but you can add them [here](https://github.com/dolcalmi/coquito-express/blob/master/lib/myapp-core/repositories/production/notification.js)
+
 
 ## Prerequisites
 
@@ -14,6 +28,7 @@ You will need the following things properly installed on your computer.
 
 * `git clone git@github.com:dolcalmi/coquito-express.git`
 * change into the new directory
+* `rm -rf .git && git init && npm init` (optional, make it yours)
 * `npm install`
 * `vagrant up` (may take a while)
 * `npm run db:migrate`
